@@ -1,0 +1,30 @@
+t1.SUBTOTAL:~~  __SUBTOTAL:  60 / 60
+t2.SUBTOTAL:~~  __SUBTOTAL:  60 / 60
+
+ AUTO-SCORE TOTAL:  120 / 120
+
+  MISSING POINTS (CRASHES?):  0
+  (EXPECTED MAX AUTO-SCORE: 120)
+=====================================================================
+
+=====================================================================
+DIAGNOSTICS:  RUNTIME RATIO TEST RESULTS (LOOK FOR POSSIBLE FALSE NEGATIVES!)
+
+t1A_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 1.60
+t1D_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 2.25
+t1E_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 1.96
+t2A_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 2.00
+t2B_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 2.11
+t2C_timed.log:~   MAX RATIO T(2N)/T(N): 2.25 ;~ OBSERVED RATIO T(2N)/T(N): 2.15
+=====================================================================
+MORE DIAGNOSTICS:  POSSIBLE ISSUES WITH CLOCK RESOLUTION 
+     (MAY NEED TO INCREASE NUMBER OF TRIALS\n\n
+t1A_timed.log:~       TIME_RATIO WARNING - first time trial is only 20 'ticks'
+t1D_timed.log:~       TIME_RATIO WARNING - first time trial is only 12 'ticks'
+t1E_timed.log:~       TIME_RATIO WARNING - first time trial is only 23 'ticks'
+t2A_timed.log:~       TIME_RATIO WARNING - first time trial is only 37 'ticks'
+t2B_timed.log:~       TIME_RATIO WARNING - first time trial is only 18 'ticks'
+t2C_timed.log:~       TIME_RATIO WARNING - first time trial is only 34 'ticks'
+=====================================================================
+NOTES ON THIS RUN:\n
+   MACHINE USED FOR TESTS:  TareqPC
