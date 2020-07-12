@@ -8,22 +8,22 @@
 using std::vector;
 
 
-/*This file contains the declaration of class, variables, and function. It must not contain any implementation.*/
+
 class GridWorld{
-    //here, all of them are private
-    class person{ //Nested & Private Class. Each person has a ID and his district info. They must be connected to his next and previous person. Think as a node in Linked List.
+private:
+    class person{
     public:
         int id;
-        int row; //district info
-        int col; //district info
-        person* next; // connects a person to next one
-        person* prev; // connects a person to previous one
+        int row;
+        int col;
+        person* next;
+        person* prev;
         person(int id, int row, int col); //constructor
     };
 
-    class district{ //Nested & Private Class. A two way linked list which acts as district in the grid. district contains persons.
+    class district{
         person* head, * tail;
-        int len; //length of the list (= total persons)
+        int len; //length of the list
     public:
         district(); //constructor
         person* push_last(int id, int row, int col); //push a person to the end of the district (=new person)
@@ -41,7 +41,7 @@ class GridWorld{
     int count_pop; //counting the total population
     std::vector<std::vector<district*> > grid; //2d vector of district. (0,0) is district, (0,1) is district so on.....
     std::vector<person*> populationInfo; //tracks the id vs person info. If a person with id 5, resides in (0,3) district at pointer=0x3234 then, populationInfo[5] = 0x3234.
-                                        //More precisely, populationInfo[person_id] = pointer of person in any district.
+                                        
 public:
     GridWorld(unsigned nrows, unsigned ncols);
     bool birth(int row, int col, int &id);
@@ -56,9 +56,7 @@ public:
     ~GridWorld();
 };
 
-GridWorld::person::person(int id, int row, int col) { //GridWorld contains a nested class person, and the person class has a function(=constructor) person.
-                                                    //So, GridWorld::person::person is used
-                                                    // :: used to access functions outside a class
+GridWorld::person::person(int id, int row, int col) {
     this->id = id;
     this->row = row;
     this->col = col; //here all of them are inilization
@@ -66,18 +64,13 @@ GridWorld::person::person(int id, int row, int col) { //GridWorld contains a nes
     this->prev = NULL;
 }
 
-GridWorld::district::district() {//GridWorld contains a nested class district, and the district class has a function(=constructor) district.
-                                                    //So, GridWorld::district::district is used
+GridWorld::district::district() {
     this->head = NULL;
     this->tail = NULL;
     this->len = 0;
 }
 
-GridWorld::person* GridWorld::district::push_last(int id, int row, int col) { //returns person class pointer, but it is nested in the GridWorld class
-                                            //so GridWorld::person is used
-                                            //GridWorld contains a nested class district, and the district class has a function push_last.
-                                            //so GridWorld::district::push_last is used
-
+GridWorld::person* GridWorld::district::push_last(int id, int row, int col) {
     if (head == NULL) { //if there is no person, then the new push is the first person (= head)
         head = new person(id, row, col);
         tail = head;
@@ -85,13 +78,6 @@ GridWorld::person* GridWorld::district::push_last(int id, int row, int col) { //
         return head;
     }
     else {
-        //push last visualization
-        //       tail:0x4               temp:0x8
-        //... 0x1 < 5 > NULL ... [NULL < Insert 9 > NULL]
-        //         0x4                    0x8
-        //... 0x1 < 5 > NULL ... [0x5 < Insert 9 > NULL]
-        //         0x4                    0x8
-        //... 0x1 < 5 > 0x8  ... [0x5 < Insert 9 > NULL]
         person* temp = new person(id, row, col);
         temp->prev = tail; //updating prev of new node
         tail->next = temp; //updating next of current last
